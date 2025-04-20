@@ -15,7 +15,7 @@ exports.HomePage = class HomePage
         this.findJobsLink = page.locator('a[href="https://labsqajobs.qaharbor.com/find-jobs/"]', {
             hasText: 'Find Jobs'
           });
-        this.recruiterSignUp = page.locator('a[href="hhttps://labsqajobs.qaharbor.com/recruiter-registration/"]', {
+        this.recruiterSignUp = page.locator('a[href="https://labsqajobs.qaharbor.com/recruiter-registration/"]', {
             hasText: 'Create Account'
           });
 

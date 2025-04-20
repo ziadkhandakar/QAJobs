@@ -8,6 +8,9 @@ exports.LoginPage = class LoginPage
         this.loginBtn= page.locator('button:has-text("Login")');
         this.lostPass= page.getByText('Lost Password');
         this.registerNow= page.getByText('Register Now');
+
+       
+
     }
 
     async gotoLogin()
