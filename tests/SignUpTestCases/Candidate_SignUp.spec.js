@@ -1,14 +1,21 @@
 import {test, expect} from '@playwright/test';
 import { SignupPage } from '../../pages/SignupPage';
+import { faker } from '@faker-js/faker';
+
 
 test('Candidate Sign up with valid credentials', async ({ page }) => {
     const signup= new SignupPage(page);
     await signup.gotoSignupCandidate();
+    // Generate fake user data
+    const username = faker.internet.username().toLowerCase();        // e.g., jiad_123
+    const email = faker.internet.email(username, '', 'yopmail.com'); // e.g., jiad_123@yopmail.com
+    const password = 'Demo1234';
     await expect(signup.heading).toHaveText('Candidate Registration');
-    await signup.signUpCandidate('jiad189','jiad.189@yopmail.com','Demo1234');
+    await signup.signUpCandidate(username,email,password);
     await expect(page).toHaveURL(/status=success/);
 
 });
+
 
 test('Verify error message for Candidate Sign up with existing username', async ({ page }) => {
     const signup= new SignupPage(page);
