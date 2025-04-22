@@ -3,7 +3,7 @@ import { SignupPage } from '../../pages/SignupPage';
 import { faker } from '@faker-js/faker';
 
 
-test('Candidate Sign up with valid credentials', async ({ page }) => {
+test('Verify that a candidate can successfully sign up using valid credentials.', async ({ page }) => {
     const signup= new SignupPage(page);
     await signup.gotoSignupCandidate();
     // Generate fake user data
@@ -17,7 +17,7 @@ test('Candidate Sign up with valid credentials', async ({ page }) => {
 });
 
 
-test('Verify error message for Candidate Sign up with existing username', async ({ page }) => {
+test('Verify that an appropriate error message is displayed when a candidate attempts to sign up using an existing username.', async ({ page }) => {
     const signup= new SignupPage(page);
     await signup.gotoSignupCandidate();
     await signup.signUpCandidate('jiad1223','jiad.112@yopmail.com','Demo1234');
@@ -26,7 +26,7 @@ test('Verify error message for Candidate Sign up with existing username', async 
 
 });
 
-test('Verify error message for Candidate Sign up with existing email', async ({ page }) => {
+test('Verify that an appropriate error message is displayed when a candidate attempts to sign up using an existing email address.', async ({ page }) => {
     const signup= new SignupPage(page);
     await signup.gotoSignupCandidate();
     await signup.signUpCandidate('jiad1223','jiad.112@yopmail.com','Demo1234');
@@ -42,6 +42,6 @@ test('Verify error message for invalid password', async ({ page }) => {
     await expect(signup.passErr).toBeVisible();
     await expect(signup.passErr).toContainText("Please increase the password length to at least 8 characters");
     await expect(signup.confPassErr).toBeVisible();
-    await expect(signup.confPassErr).toContainText("Please increase the password length to at least 8 characters");
+    await expect(signup.confPassErr).toContainText("Please increase the confirm password length to at least 8 characters");
 });
 
